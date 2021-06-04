@@ -1,0 +1,15 @@
+
+/.next
+/node_modules
+/.idea
+yarn-error.log
+*.log
+*.lerna_backup
+*.local.*
+package-lock.json
+/tmp
+
+# intl18-next
+translation_old.json
+config/local.conf
+build.txt
