@@ -6,7 +6,7 @@ services:
     image: postgres
     environment:
       POSTGRES_USER: testuser
-      POSTGRES_PASSWORD: test@123
+      POSTGRES_PASSWORD: testpass
       POSTGRES_DB: twitter
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
