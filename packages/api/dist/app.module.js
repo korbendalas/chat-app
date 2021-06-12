@@ -10,14 +10,25 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const prisma_module_1 = require("./prisma/prisma.module");
-const users_module_1 = require("./users/users.module");
+const coffies_controller_1 = require("./modules/coffies/coffies.controller");
+const coffies_module_1 = require("./modules/coffies/coffies.module");
+const database_module_1 = require("./modules/database/database.module");
+const config_1 = require("@nestjs/config");
+const users_module_1 = require("./modules/users/users.module");
+const auth_module_1 = require("./modules/auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [prisma_module_1.PrismaModule, users_module_1.UsersModule],
-        controllers: [app_controller_1.AppController],
+        imports: [
+            coffies_module_1.CoffiesModule,
+            database_module_1.DatabaseModule,
+            config_1.ConfigModule.forRoot({ isGlobal: true }),
+            database_module_1.DatabaseModule,
+            users_module_1.UsersModule,
+            auth_module_1.AuthModule,
+        ],
+        controllers: [app_controller_1.AppController, coffies_controller_1.CoffiesController],
         providers: [app_service_1.AppService],
     })
 ], AppModule);

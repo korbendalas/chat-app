@@ -5,5 +5,5 @@ export declare class UsersController {
     signupUser(userData: {
         name?: string;
         email: string;
-    }): Promise<import(".prisma/client").User>;
+    }): Promise<any>;
 }

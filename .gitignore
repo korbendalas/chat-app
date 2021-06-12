@@ -8,6 +8,7 @@ yarn-error.log
 *.local.*
 package-lock.json
 /tmp
+.env
 
 # intl18-next
 translation_old.json
