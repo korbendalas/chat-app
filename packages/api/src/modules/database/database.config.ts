@@ -1,30 +1,16 @@
-import * as dotenv from 'dotenv';
-import { IDatabaseConfig } from './interfaces/dbConfig.interface';
+import { SequelizeModuleOptions } from "@nestjs/sequelize";
+import { ConfigService } from "@nestjs/config";
+import { DEVELOPMENT } from "../../constants";
 
-dotenv.config();
-
-export const databaseConfig: IDatabaseConfig = {
-  development: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME_DEVELOPMENT,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
-  },
-  test: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME_TEST,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT,
-  },
-  production: {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME_PRODUCTION,
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT,
-  },
+export const dbConfig = (configService: ConfigService) => {
+  return {
+    username: configService.get("DB_USER"),
+    password: configService.get("DB_PASS"),
+    database: configService.get("DB_NAME"),
+    host: configService.get("DB_HOST"),
+    port: configService.get("DB_PORT"),
+    dialect: configService.get("DB_DIALECT"),
+    autoLoadModels: true,
+    synchronize: configService.get("NODE_ENV") === DEVELOPMENT,
+  } as SequelizeModuleOptions;
 };
