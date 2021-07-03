@@ -1,13 +1,13 @@
 import {
-  Table,
+  BelongsToMany,
   Column,
-  Model,
-  DataType,
   CreatedAt,
-  UpdatedAt,
+  DataType,
   DeletedAt,
   ForeignKey,
-  HasMany,
+  Model,
+  Table,
+  UpdatedAt,
 } from "sequelize-typescript";
 import { User } from "../../users/user.entity";
 import { Likes } from "./likes.entity";
@@ -29,13 +29,13 @@ export class Tweet extends Model {
   @Column({ type: DataType.INTEGER })
   user_id: number;
 
-  @HasMany(() => Likes)
+  @BelongsToMany(() => User, () => Likes)
   likes: Likes[];
 
-  @HasMany(() => Comments)
+  @BelongsToMany(() => User, () => Comments)
   comments: Comments[];
 
-  @HasMany(() => Retweets)
+  @BelongsToMany(() => User, () => Retweets)
   retweets: Retweets[];
 
   @CreatedAt
