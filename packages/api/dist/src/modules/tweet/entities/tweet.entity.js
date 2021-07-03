@@ -30,15 +30,15 @@ __decorate([
     __metadata("design:type", Number)
 ], Tweet.prototype, "user_id", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => likes_entity_1.Likes),
+    sequelize_typescript_1.BelongsToMany(() => user_entity_1.User, () => likes_entity_1.Likes),
     __metadata("design:type", Array)
 ], Tweet.prototype, "likes", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => comments_entity_1.Comments),
+    sequelize_typescript_1.BelongsToMany(() => user_entity_1.User, () => comments_entity_1.Comments),
     __metadata("design:type", Array)
 ], Tweet.prototype, "comments", void 0);
 __decorate([
-    sequelize_typescript_1.HasMany(() => retweets_entity_1.Retweets),
+    sequelize_typescript_1.BelongsToMany(() => user_entity_1.User, () => retweets_entity_1.Retweets),
     __metadata("design:type", Array)
 ], Tweet.prototype, "retweets", void 0);
 __decorate([
