@@ -16,6 +16,7 @@ const auth_module_1 = require("./modules/auth/auth.module");
 const sequelize_1 = require("@nestjs/sequelize");
 const database_config_1 = require("./modules/database/database.config");
 const app_config_1 = require("../config/app.config");
+const tweet_module_1 = require("./modules/tweet/tweet.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -32,6 +33,7 @@ AppModule = __decorate([
             }),
             users_module_1.UsersModule,
             auth_module_1.AuthModule,
+            tweet_module_1.TweetModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

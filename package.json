@@ -16,7 +16,7 @@
   },
   "scripts": {
    "test": "lerna run test",
-    "dev": "lerna run --parallel --stream start:dev --scope api"
+    "dev": "lerna run --parallel --stream start:dev --scope api --scope app"
   },
   "dependencies": {
     "lerna": "^4.0.0"

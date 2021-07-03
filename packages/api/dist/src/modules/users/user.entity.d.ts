@@ -4,4 +4,7 @@ export declare class User extends Model {
     email: string;
     password: string;
     gender: string;
+    creationDate: Date;
+    updatedOn: Date;
+    deletionDate: Date;
 }

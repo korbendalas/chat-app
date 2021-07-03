@@ -11,5 +11,4 @@ export declare class AuthController {
         user: any;
         token: string;
     }>;
-    test(): Promise<string>;
 }

@@ -27,9 +27,6 @@ let AuthController = class AuthController {
     async signUp(user) {
         return await this.authService.create(user);
     }
-    async test() {
-        return "TEST";
-    }
 };
 __decorate([
     common_1.UseGuards(passport_1.AuthGuard("local")),
@@ -46,12 +43,6 @@ __decorate([
     __metadata("design:paramtypes", [user_dto_1.UserDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "signUp", null);
-__decorate([
-    common_1.Get(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], AuthController.prototype, "test", null);
 AuthController = __decorate([
     common_1.Controller("auth"),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

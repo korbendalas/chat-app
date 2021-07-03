@@ -43,8 +43,23 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], User.prototype, "gender", void 0);
+__decorate([
+    sequelize_typescript_1.CreatedAt,
+    __metadata("design:type", Date)
+], User.prototype, "creationDate", void 0);
+__decorate([
+    sequelize_typescript_1.UpdatedAt,
+    __metadata("design:type", Date)
+], User.prototype, "updatedOn", void 0);
+__decorate([
+    sequelize_typescript_1.DeletedAt,
+    __metadata("design:type", Date)
+], User.prototype, "deletionDate", void 0);
 User = __decorate([
-    sequelize_typescript_1.Table
+    sequelize_typescript_1.Table({
+        tableName: "user",
+        timestamps: true,
+    })
 ], User);
 exports.User = User;
 //# sourceMappingURL=user.entity.js.map

@@ -1,12 +1,36 @@
-import { Table, Column, Model, DataType } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  CreatedAt,
+  UpdatedAt,
+  DeletedAt,
+} from "sequelize-typescript";
 
-@Table
+@Table({
+  tableName: "user",
+  timestamps: true,
+})
 export class User extends Model {
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  first_name: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  last_name: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    unique: true,
+  })
+  username: string;
 
   @Column({
     type: DataType.STRING,
@@ -21,10 +45,12 @@ export class User extends Model {
   })
   password: string;
 
-  @Column({
-    type: DataType.ENUM,
-    values: ["male", "female"],
-    allowNull: false,
-  })
-  gender: string;
+  @CreatedAt
+  createdAt: Date;
+
+  @UpdatedAt
+  updatedAt: Date;
+
+  @DeletedAt
+  deletedAt: Date;
 }
