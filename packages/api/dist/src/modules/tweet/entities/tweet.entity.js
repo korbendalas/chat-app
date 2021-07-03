@@ -9,64 +9,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
+exports.Tweet = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
-let User = class User extends sequelize_typescript_1.Model {
+const user_entity_1 = require("../../users/user.entity");
+const likes_entity_1 = require("./likes.entity");
+const comments_entity_1 = require("./comments.entity");
+const retweets_entity_1 = require("./retweets.entity");
+let Tweet = class Tweet extends sequelize_typescript_1.Model {
 };
 __decorate([
     sequelize_typescript_1.Column({
-        type: sequelize_typescript_1.DataType.STRING,
+        type: sequelize_typescript_1.DataType.STRING(140),
         allowNull: false,
     }),
     __metadata("design:type", String)
-], User.prototype, "first_name", void 0);
+], Tweet.prototype, "text", void 0);
 __decorate([
-    sequelize_typescript_1.Column({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "last_name", void 0);
+    sequelize_typescript_1.ForeignKey(() => user_entity_1.User),
+    sequelize_typescript_1.Column({ type: sequelize_typescript_1.DataType.INTEGER }),
+    __metadata("design:type", Number)
+], Tweet.prototype, "user_id", void 0);
 __decorate([
-    sequelize_typescript_1.Column({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false,
-        unique: true,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "username", void 0);
+    sequelize_typescript_1.HasMany(() => likes_entity_1.Likes),
+    __metadata("design:type", Array)
+], Tweet.prototype, "likes", void 0);
 __decorate([
-    sequelize_typescript_1.Column({
-        type: sequelize_typescript_1.DataType.STRING,
-        unique: true,
-        allowNull: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
+    sequelize_typescript_1.HasMany(() => comments_entity_1.Comments),
+    __metadata("design:type", Array)
+], Tweet.prototype, "comments", void 0);
 __decorate([
-    sequelize_typescript_1.Column({
-        type: sequelize_typescript_1.DataType.STRING,
-        allowNull: false,
-    }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
+    sequelize_typescript_1.HasMany(() => retweets_entity_1.Retweets),
+    __metadata("design:type", Array)
+], Tweet.prototype, "retweets", void 0);
 __decorate([
     sequelize_typescript_1.CreatedAt,
     __metadata("design:type", Date)
-], User.prototype, "createdAt", void 0);
+], Tweet.prototype, "createdAt", void 0);
 __decorate([
     sequelize_typescript_1.UpdatedAt,
     __metadata("design:type", Date)
-], User.prototype, "updatedAt", void 0);
+], Tweet.prototype, "updatedAt", void 0);
 __decorate([
     sequelize_typescript_1.DeletedAt,
     __metadata("design:type", Date)
-], User.prototype, "deletedAt", void 0);
-User = __decorate([
+], Tweet.prototype, "deletedAt", void 0);
+Tweet = __decorate([
     sequelize_typescript_1.Table({
-        tableName: "user",
+        tableName: "tweet",
         timestamps: true,
     })
-], User);
-exports.User = User;
-//# sourceMappingURL=user.entity.js.map
+], Tweet);
+exports.Tweet = Tweet;
+//# sourceMappingURL=tweet.entity.js.map

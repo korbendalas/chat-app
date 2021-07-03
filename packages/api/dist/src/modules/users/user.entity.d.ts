@@ -1,10 +1,11 @@
 import { Model } from "sequelize-typescript";
 export declare class User extends Model {
-    name: string;
+    first_name: string;
+    last_name: string;
+    username: string;
     email: string;
     password: string;
-    gender: string;
-    creationDate: Date;
-    updatedOn: Date;
-    deletionDate: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt: Date;
 }
